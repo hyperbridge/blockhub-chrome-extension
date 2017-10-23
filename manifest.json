@@ -1,0 +1,77 @@
+{
+  // Extension ID: knldjmfmopnpolahpmmgbagdohdnhkik
+  "key": "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDcBHwzDvyBQ6bDppkIs9MP4ksKqCMyXQ/A52JivHZKh4YO/9vJsT3oaYhSpDCE9RPocOEQvwsHsFReW2nUEc6OLLyoCFFxIb7KkLGsmfakkut/fFdNJYh0xOTbSN8YvLWcqph09XAY2Y/f0AL7vfO1cuCqtkMt8hFrBGWxDdf9CQIDAQAB",  
+  "manifest_version": 2,
+  "name": "Portal",
+  "short_name": "Portal",
+  "description": "Connecting the crypto world",
+  "version": "0.0.1",
+  "minimum_chrome_version": "38",
+  "externally_connectable": {
+    "matches": [
+      "*://*.google.com/*"
+    ]
+  },
+  "icons": {
+  },
+  "optional_permissions": [
+    "management"
+  ],
+  "options_ui": {
+    "open_in_tab": true,
+    "page": "options.html"
+  },
+  "browser_action": {
+    "default_popup": "settings.html",
+    "default_title": "Portal"
+  },
+  "permissions": [
+    "nativeMessaging",
+    "tabs",
+    "activeTab",
+    "\u003Call_urls>",
+    "contextMenus",
+    "webRequest",
+    "webRequestBlocking",
+    "webNavigation",
+    "storage",
+    "unlimitedStorage",
+    "notifications",
+    "idle",
+    "alarms",
+    "https://bittrex.com/*"
+  ],
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "css": [
+        "styles/enhancer.css"
+      ],
+      "js": [
+        "scripts/enhancer.preload.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "scripts/enhancer.postload.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "persistent": true,
+    "scripts": ["scripts/background.js"]
+  }
+}
